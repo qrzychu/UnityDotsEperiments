@@ -2,10 +2,11 @@ using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
-using UnityEngine;
 using UnityTemplateProjects;
+using UnityTemplateProjects.Systems;
 
 [AlwaysSynchronizeSystem]
+[UpdateAfter(typeof(KeyboardMoveBallSystem))]
 public class BallMovingSystem : JobComponentSystem
 {
     protected override JobHandle OnUpdate(JobHandle inputDeps)

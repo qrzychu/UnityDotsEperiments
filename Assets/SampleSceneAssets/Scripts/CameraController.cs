@@ -1,3 +1,4 @@
+using System.Text;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -13,29 +14,37 @@ public class CameraController : MonoBehaviour
     [SerializeField] public KeyCode DownKey = KeyCode.S;
     [SerializeField] public KeyCode LeftKey = KeyCode.A;
     [SerializeField] public KeyCode RightKey = KeyCode.D;
+
+    [SerializeField] public bool allowMousePan = false;
     
     public void Update()
     {
         float deltaTime = Time.deltaTime;
       
         Vector3 position = transform.position;
+
+        bool mouseAtUpperBorder = allowMousePan && Input.mousePosition.y >= Screen.height - panBorder;
+        bool mouseAtLeftBorder  = allowMousePan && Input.mousePosition.x <= panBorder;
+        bool mouseAtLowerBorder = allowMousePan && Input.mousePosition.y <= panBorder;
+        bool mouseAtRightBorder = allowMousePan && Input.mousePosition.x >= Screen.width - panBorder;
+
         
-        if(Input.GetKey(UpKey) || Input.mousePosition.y >= Screen.height - panBorder)
+        if(Input.GetKey(UpKey) || mouseAtUpperBorder)
         {
             position.z += panSpeed * deltaTime;
         }
-        
-        if(Input.GetKey(DownKey) || Input.mousePosition.y <= panBorder)
+
+        if(Input.GetKey(DownKey) || mouseAtLowerBorder)
         {
             position.z -= panSpeed * deltaTime;
         }
-        
-        if(Input.GetKey(LeftKey) || Input.mousePosition.x <= panBorder)
+
+        if(Input.GetKey(LeftKey) || mouseAtLeftBorder)
         {
             position.x -= panSpeed * deltaTime;
         }
-        
-        if(Input.GetKey(RightKey) || Input.mousePosition.x >= Screen.width - panBorder)
+
+        if(Input.GetKey(RightKey) || mouseAtRightBorder)
         {
             position.x += panSpeed * deltaTime;
         }
