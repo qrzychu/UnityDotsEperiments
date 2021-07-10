@@ -22,7 +22,7 @@ namespace UnityTemplateProjects
                 var instance = entityManager.Instantiate(prefab);
                 var position = transform.TransformPoint(
                     Random.Range(-SpawnAreaSize, SpawnAreaSize),
-                    Random.Range(-SpawnAreaSize, SpawnAreaSize),
+                    Random.Range(0, SpawnAreaSize * 2),
                     Random.Range(-SpawnAreaSize, SpawnAreaSize));
 
                 entityManager.SetComponentData(instance, new Translation {Value = position});

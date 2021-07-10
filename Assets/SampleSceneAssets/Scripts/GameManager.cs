@@ -1,19 +1,23 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace UnityTemplateProjects
 {
-    public class GameManager : ScriptableObject
+    public class GameManager : MonoBehaviour
     {
-        private GameManager(){}
-
-        private static readonly Lazy<GameManager> _instance = new Lazy<GameManager>(CreateInstance<GameManager>);
-        public static GameManager Instance => _instance.Value;
+        public static GameManager Instance { get; private set; }
 
         public float ballMovementSpeed = 5;
 
         private void Awake()
         {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            Instance = this;
+            
             Cursor.visible = true;
         }
     }

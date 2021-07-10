@@ -1286,8 +1286,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfe5004afeae9f4bb58f1e4ed61644c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panSpeed: 20
+  panSpeed: 50
   panBorder: 20
+  panLimit:
+    x: 50
+    y: 50
   UpKey: 119
   DownKey: 115
   LeftKey: 97
@@ -4508,7 +4511,7 @@ MonoBehaviour:
     distanceFadeStart: 50
     distanceFadeEnd: 60
     textureIndex: 0
-    textureOffset: {x: -0, y: -0, z: 0}
+    textureOffset: {x: -0, y: -1.6674718, z: 0}
 --- !u!1 &1514117013
 GameObject:
   m_ObjectHideFlags: 0
@@ -5347,7 +5350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b783c9b3c14c9e8d5a0955bf3fef23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BallMovementSpeed: 20
+  ballMovementSpeed: 5
 --- !u!1 &1657958645
 GameObject:
   m_ObjectHideFlags: 0
