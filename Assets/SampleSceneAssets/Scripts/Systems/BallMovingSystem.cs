@@ -11,7 +11,7 @@ public class BallMovingSystem : JobComponentSystem
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
         float deltaTime = Time.DeltaTime;
-        float ballMovementSpeed = GameManager.Instance.BallMovementSpeed;
+        float ballMovementSpeed = GameManager.Instance.ballMovementSpeed;
 
         Entities
             .ForEach((ref Translation translation, in BallData ballData) =>

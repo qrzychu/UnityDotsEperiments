@@ -1,16 +1,20 @@
 ﻿using System;
-using Unity.Entities;
 using UnityEngine;
 
 namespace UnityTemplateProjects
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : ScriptableObject
     {
         private GameManager(){}
 
-        private static readonly Lazy<GameManager> _instance = new Lazy<GameManager>(() => new GameManager());
+        private static readonly Lazy<GameManager> _instance = new Lazy<GameManager>(CreateInstance<GameManager>);
         public static GameManager Instance => _instance.Value;
 
-        public float BallMovementSpeed = 5;
+        public float ballMovementSpeed = 5;
+
+        private void Awake()
+        {
+            Cursor.visible = true;
+        }
     }
 }
